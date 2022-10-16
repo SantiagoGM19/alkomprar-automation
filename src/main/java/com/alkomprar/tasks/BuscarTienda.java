@@ -11,34 +11,32 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import static com.alkomprar.userinterfaces.ConfirmacionCarritoPage.CERRAR_MODAL;
 import static com.alkomprar.userinterfaces.DetalleArticuloPage.AGREGAR_ELEMENTO_CARRITO;
 import static com.alkomprar.userinterfaces.DetalleArticuloPage.DIV_PRIMER_ELEMENTO;
+import static com.alkomprar.userinterfaces.HeaderPage.TIENDAS_ALKOSTO;
 import static com.alkomprar.userinterfaces.MenuPage.CATEGORIA;
 import static com.alkomprar.userinterfaces.MenuPage.PRIMER_SUB_CATEGORIA;
+import static com.alkomprar.userinterfaces.MenuTiendasPage.TIENDA;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
-public class CotizarSeguro implements Task {
-    private String categoria;
+public class BuscarTienda implements Task {
+    private String ubicacion;
 
-    public CotizarSeguro(String categoria) {
-        this.categoria = categoria;
+    public BuscarTienda(String categoria) {
+        this.ubicacion = categoria;
     }
 
-    public static Performable elemento(String categoria) {
-        return instrumented(CotizarSeguro.class, categoria);
+    public static Performable sitio(String ubicacion) {
+        return instrumented(BuscarTienda.class, ubicacion);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                MoveMouse.to(CATEGORIA.of(categoria)),
-                WaitUntil.the(PRIMER_SUB_CATEGORIA.of(categoria), isVisible()),
-                Click.on(PRIMER_SUB_CATEGORIA.of(categoria)),
-                Scroll.to(DIV_PRIMER_ELEMENTO).andAlignToTop(),
-                WaitUntil.the(AGREGAR_ELEMENTO_CARRITO, isClickable()),
-                Click.on(AGREGAR_ELEMENTO_CARRITO),
-                WaitUntil.the(CERRAR_MODAL, isClickable()),
-                Click.on(CERRAR_MODAL)
+                MoveMouse.to(TIENDAS_ALKOSTO),
+                Click.on(TIENDAS_ALKOSTO),
+                MoveMouse.to(TIENDA.of(ubicacion)),
+                Click.on(TIENDA.of(ubicacion))
         );
     }
 }

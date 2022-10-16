@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-		features = "src/test/resources/features/cotizar_seguro.feature",
+		features = "src/test/resources/features/buscar_tienda_fisica.feature",
 		glue = {"com.alkomprar.stepdefinitions"},
 		snippets = CucumberOptions.SnippetType.CAMELCASE
 )
-public class CotizarSeguroRunner {
+public class BuscarTiendaFisicaRunner {
 
 }
