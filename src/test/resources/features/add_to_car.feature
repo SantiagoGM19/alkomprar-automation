@@ -16,3 +16,8 @@ Característica: Add to car
     Dado "Rodolfo" tiene un articulo de la categoria "Cámaras" en el carrito
     Cuando quiere cambiar el metodo de envio para recogerlo en la tienda "alkosto av. 30"
     Entonces debe ver en el carrito de compras la direccion "Alkosto Av. 30" para recogerlo
+
+    Escenario: Eliminar 1 producto del carrito
+      Dado "Rodolfo" tiene un articulo de la categoria "Videojuegos" en el carrito
+      Cuando quiere eliminar este articulo del carrito
+      Entonces debe ver 0 articulos en el carrito de compras

@@ -3,6 +3,7 @@ package com.alkomprar.stepdefinitions;
 import com.alkomprar.tasks.AgregarAlCarrito;
 import com.alkomprar.tasks.BuscarYAgregarCarrito;
 import com.alkomprar.tasks.CambiarLugarEnvio;
+import com.alkomprar.tasks.EliminarArticulo;
 import io.cucumber.java.ast.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -74,6 +75,18 @@ public class AddToCarStepDefinitions {
                 Ensure.that(DIRECCION_ENVIO).hasText(direccion)
         );
 
+    }
+
+    @Cuando("quiere eliminar este articulo del carrito")
+    public void quiereEliminarEsteArticuloDelCarrito() {
+        theActorInTheSpotlight().attemptsTo(
+                Click.on(CARRITO),
+                EliminarArticulo.eliminar()
+        );
+    }
+    @Entonces("debe ver {int} articulos en el carrito de compras")
+    public void debeVerArticulosEnElCarritoDeCompras(Integer cantidadArticulos) {
+        Ensure.that(ARTICULOS_CARRITO).values().hasSize(cantidadArticulos);
     }
 
 }
