@@ -26,16 +26,14 @@ public class BuscarTienda implements Task {
         this.ubicacion = categoria;
     }
 
-    public static Performable sitio(String ubicacion) {
+    public static Performable lugar(String ubicacion) {
         return instrumented(BuscarTienda.class, ubicacion);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                MoveMouse.to(TIENDAS_ALKOSTO),
                 Click.on(TIENDAS_ALKOSTO),
-                MoveMouse.to(TIENDA.of(ubicacion)),
                 Click.on(TIENDA.of(ubicacion))
         );
     }

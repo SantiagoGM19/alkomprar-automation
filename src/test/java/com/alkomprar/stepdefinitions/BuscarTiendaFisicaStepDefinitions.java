@@ -21,7 +21,7 @@ public class BuscarTiendaFisicaStepDefinitions {
     public void quiereBuscarLaTienda(String actor, String ubicacion) {
         theActorCalled(actor).attemptsTo(
                 Open.url("https://www.alkosto.com/"),
-                BuscarTienda.sitio(ubicacion)
+                BuscarTienda.lugar(ubicacion)
         );
     }
     @Entonces("debe ver la direccion {string}")
